@@ -1,0 +1,32 @@
+There are 2 types of imports in ES6 - named and default imports.
+App.js
+
+// 👇️ named import
+import {myFunc1} from 'my-package';
+
+// 👇️ default import
+import myFunc2 from 'my-package';
+
+
+
+// 👇️ named export
+export const myFunc1 = () => {
+  console.log('hello world');
+}
+
+// 👇️ default export
+export default function myFunc2() {
+  console.log('hello world');
+}
+
+
+
+
+
+
+
+
+
+
+
+
