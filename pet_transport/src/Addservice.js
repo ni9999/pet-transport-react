@@ -1,5 +1,4 @@
-import "./App.css";
-import { auth, db } from "./firebase";
+import { auth, db, storage } from "./firebase";
 import React, { useState, useEffect } from "react";
 import { query, collection, where, getDocs, addDoc  } from "firebase/firestore";
 import { async } from "@firebase/util";
@@ -7,6 +6,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Login from "./login";
+import { ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
+
+
+
+
+
+
+
 
 
 
@@ -23,6 +30,7 @@ function Addservice () {
     const [user] = useAuthState(auth);
     const [username, setUserName] = useState("");
     const [uid, setUid] = useState("");
+    const [percent, setPercent] = useState(0);
   
     const fetchUserName = async () => {
       try {
@@ -42,16 +50,50 @@ function Addservice () {
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
     const [contact, setContact] = useState("");
-    const [image, setImage] = useState("");
-
+    const [image, setImage] = useState(null);
+    const [imgurl, setImgurl] = useState("");
 
     const handleSubmit = async (event) => { 
+
+      // uploading image to cloud storage
+
+
+      const storageRef = ref(storage, `/images/${uid}/${image.name}`);
+
+
+      // progress can be paused and resumed. It also exposes progress updates.
+      // Receives the storage reference and the image to upload.
+      const uploadTask = uploadBytesResumable(storageRef, image);
+  
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+  
+          // update progress
+          setPercent(percent);
+        },
+        (err) => console.log(err),
+        () => {
+          // download url
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            setImgurl(url);
+            console.log(url);
+          });
+        }
+      );
+
+
+      //uploading info to database
       try {
         const ref = await addDoc(collection(db, service), {
           uid: uid,
           username: username,
           name: name,
-          image: image,
+          imgurl: imgurl,
+          imageurl: `/images/${uid}/${image.name}`,
           location: location,
           description: description,
           contact: contact,
@@ -117,14 +159,16 @@ function Addservice () {
         />
 
         <label htmlFor="image">Image:</label>
-        {/* <input
+        <input
         type="file"
         id="image"
+        accept="image/*"
         onChange={(e) => {
             const file = e.target.files[0];
             setImage(file)
         }}
-        /> */}
+        />
+        <p>{percent} "% done"</p>
         
         <button type="submit" onClick={handleSubmit} >Submit</button>
       </div>
@@ -135,3 +179,61 @@ function Addservice () {
   
 
 export default Addservice;
+
+
+
+
+
+
+
+
+
+// tutorial for uploading image
+
+
+
+// function App() {
+//   // State to store uploaded file
+//   const [file, setFile] = useState("");
+
+//   // progress
+//   const [percent, setPercent] = useState(0);
+
+//   // Handle file upload event and update state
+//   function handleChange(event) {
+//     setFile(event.target.files[0]);
+//   }
+
+//   const handleUpload = () => {
+//     if (!file) {
+//       alert("Please upload an image first!");
+//     }
+
+//     const storageRef = ref(storage, `/files/${file.name}`);
+
+//     // progress can be paused and resumed. It also exposes progress updates.
+//     // Receives the storage reference and the file to upload.
+//     const uploadTask = uploadBytesResumable(storageRef, file);
+
+//     uploadTask.on(
+//       "state_changed",
+//       (snapshot) => {
+//         const percent = Math.round(
+//           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+//         );
+
+//         // update progress
+//         setPercent(percent);
+//       },
+//       (err) => console.log(err),
+//       () => {
+//         // download url
+//         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+//           console.log(url);
+//         });
+//       }
+//     );
+//   };
+//   return (
+//     <div>
+//       <input type="file" onChange={handleChange} accept="/image/*" />

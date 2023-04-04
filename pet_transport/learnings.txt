@@ -23,6 +23,17 @@ export default function myFunc2() {
 
 
 
+`` is template literals in js to manipulate string 
+see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+
+
+
+
+
+
+
+
+
 
 
 

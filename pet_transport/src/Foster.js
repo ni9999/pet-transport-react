@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { query, collection, where, getDocs, addDoc  } from "firebase/firestore";
-import { auth, db } from './firebase';
+import { auth, db, storage } from './firebase';
 import { async } from "@firebase/util";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
+import { ref, getDownloadURL } from "firebase/storage";
 
 
 
@@ -30,6 +31,8 @@ function Foster() {
     fetchPost();
 
     }, []);
+
+    
 
     // database.ref("Services").on("value", (snapshot) => {
     //   const ServiceList = [];
@@ -62,7 +65,18 @@ function Foster() {
 
 
 
+  const getImgurl = (loc) => {
+    const imgRef = ref(storage, loc);
+    const imgurl = "";
+    // Get the download URL
+    getDownloadURL(imgRef)
+      .then((url) => {
+        imgurl = url;
+      })
+    
+    return imgurl;
 
+  };
 
 
 
@@ -78,7 +92,7 @@ function Foster() {
 
       {Services.map((Service) => (
         <div className="Service" key={Service.id}>
-          <img src={Service.image} alt={Service.name} />
+          <img src={getImgurl(Service.imageurl)} alt={Service.imageurl} />
           <div className="Service-info">
             <h2>{Service.name}</h2>
             <p>{Service.location}</p>

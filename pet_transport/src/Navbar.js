@@ -1,12 +1,11 @@
 import React from 'react';
-import './Navbar.css';
 import { auth, db } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import { AppBar, Button, Box, Typography } from '@mui/material';
 
 
 function UserNav () {
@@ -33,10 +32,10 @@ function UserNav () {
 
     if(user) {
         fetchUserName();
-        return (<button onClick={() => handleClick("/Dashboard")}>{name}</button>);
+        return (<Button onClick={() => handleClick("/Dashboard")}>{name}</Button>);
     }
 
-    return (<button onClick={() => handleClick("/Login")}>Login</button>);
+    return (<Button onClick={() => handleClick("/Login")}>Login</Button>);
 }
 
 
@@ -44,16 +43,17 @@ function Navbar() {
 
 
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
+    <AppBar position = 'static' sx={{ bgcolor: '#333333' }}>
+      <Typography variant="h6" component="div" sx={{ color: '#ffffff', marginLeft: '20px' }}>
         <Link to="/">
           <h1>Home</h1>
         </Link>
-      </div>
-      <ul className="navbar-links">
-          <UserNav />
-      </ul>
-    </nav>
+      </Typography>
+
+      <Box sx={{ marginLeft: 'auto' }}>
+        <UserNav />      
+      </Box>
+    </AppBar>
   );
 }
 
