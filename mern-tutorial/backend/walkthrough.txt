@@ -1,0 +1,15 @@
+first 
+npm init (will make a node modules)
+npm i express dotenv mongoose colors
+npm i -D nodemon //get rid of always restarting the server. by dev dependency
+
+Add a script here in package.json
+  "scripts": {
+    "server": "nodemon backend/server.js"
+  },
+
+now we can run 
+npm run server
+to run the server.js file
+
+.env should be in root (where the node modules are) ------------to access .env file

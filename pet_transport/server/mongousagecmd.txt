@@ -1,0 +1,124 @@
+install mongodb-mongosh
+then run uri
+then you can run commands and methods 
+method cheat sheet : https://gist.github.com/codeSTACKr/53fd03c7f75d40d07797b8e4e47d78ec
+
+
+
+gitpod /workspace/pet-transport-react (main) $ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.listecho "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.lis
+tee: 'deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse': No such file or directory
+deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse
+gitpod /workspace/pet-transport-react (main) $ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse
+gitpod /workspace/pet-transport-react (main) $ sudo apt-get update
+Get:1 https://download.docker.com/linux/ubuntu jammy InRelease [48.9 kB]
+Ign:3 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 InRelease                                                     
+Get:4 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [21.7 kB]                                          
+Get:2 https://apt.llvm.org/jammy llvm-toolchain-jammy-15 InRelease [6,833 B]                                                  
+Get:5 https://apt.llvm.org/jammy llvm-toolchain-jammy-15/main amd64 Packages [12.4 kB]                                        
+Get:6 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 Release [3,094 B]                                             
+Get:7 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]                                                     
+Hit:8 http://archive.ubuntu.com/ubuntu jammy InRelease                                                                        
+Get:9 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 Release.gpg [801 B]                                           
+Get:10 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]                                                      
+Get:11 https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy InRelease [23.8 kB]                                         
+Get:12 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0/multiverse amd64 Packages [24.7 kB]                     
+Get:13 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0/multiverse arm64 Packages [21.9 kB]                          
+Get:14 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [935 kB]                                      
+Get:15 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [108 kB]                                       
+Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [545 kB]                                    
+Get:17 https://ppa.launchpadcontent.net/ondrej/apache2/ubuntu jammy InRelease [23.8 kB] 
+Get:18 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,185 kB]                                      
+Get:19 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [541 kB]                                    
+Get:20 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [36.3 kB]                                   
+Get:21 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [631 kB]                                          
+Get:22 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [42.2 kB]                                     
+Get:23 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [919 kB]                                   
+Get:24 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [49.4 kB]                              
+Get:25 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [27.0 kB]
+Get:26 https://ppa.launchpadcontent.net/ondrej/nginx-mainline/ubuntu jammy InRelease [23.8 kB]
+Get:27 https://ppa.launchpadcontent.net/ondrej/php/ubuntu jammy InRelease [23.9 kB]
+Get:28 https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy/main amd64 Packages [2,960 B]
+Get:29 https://ppa.launchpadcontent.net/ondrej/apache2/ubuntu jammy/main amd64 Packages [3,941 B]
+Get:30 https://ppa.launchpadcontent.net/ondrej/nginx-mainline/ubuntu jammy/main amd64 Packages [5,655 B]
+Get:31 https://ppa.launchpadcontent.net/ondrej/php/ubuntu jammy/main amd64 Packages [186 kB]
+Fetched 5,682 kB in 5s (1,034 kB/s)
+Reading package lists... Done
+N: Ignoring file 'mongodb-org-6.0.lis' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension
+N: Ignoring file 'mongodb-org-6.0.listecho' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension
+W: https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/6.0/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+gitpod /workspace/pet-transport-react (main) $ sudo apt-get install mongodb-mongosh
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  mongodb-mongosh
+0 upgraded, 1 newly installed, 0 to remove and 117 not upgraded.
+Need to get 42.0 MB of archives.
+After this operation, 185 MB of additional disk space will be used.
+Get:1 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0/multiverse amd64 mongodb-mongosh amd64 1.10.0 [42.0 MB]
+Fetched 42.0 MB in 1s (43.8 MB/s)          
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package mongodb-mongosh.
+(Reading database ... 35573 files and directories currently installed.)
+Preparing to unpack .../mongodb-mongosh_1.10.0_amd64.deb ...
+Unpacking mongodb-mongosh (1.10.0) ...
+YSetting up mongodb-mongosh (1.10.0) ...
+Processing triggers for man-db (2.10.2-1) ...
+N: Ignoring file 'mongodb-org-6.0.lis' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension
+N: Ignoring file 'mongodb-org-6.0.listecho' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension
+gitpod /workspace/pet-transport-react (main) $ mongosh
+Current Mongosh Log ID: 648f21f5ea5d228cdde69a9f
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.0
+MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017
+gitpod /workspace/pet-transport-react (main) $ mongosh "mongodb+srv://202118006:testmongo@cluster0.p5cha2x.mongodb.net/?retryWrites=true&w=majority"
+Current Mongosh Log ID: 648f2228efdf9aa568c592e0
+Connecting to:          mongodb+srv://<credentials>@cluster0.p5cha2x.mongodb.net/?retryWrites=true&w=majority&appName=mongosh+1.10.0
+Using MongoDB:          6.0.6
+Using Mongosh:          1.10.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+Atlas atlas-lxrimx-shard-0 [primary] test> show dbs
+mydb         112.00 KiB
+productlist    8.00 KiB
+admin        336.00 KiB
+local          4.85 GiB
+Atlas atlas-lxrimx-shard-0 [primary] test> use cmdpractice
+switched to db cmdpractice
+Atlas atlas-lxrimx-shard-0 [primary] cmdpractice> db.createCollection("commands")
+{ ok: 1 }
+Atlas atlas-lxrimx-shard-0 [primary] cmdpractice> db.posts.insertOne({"os": "linux"}{id : "wow"})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:34)
+
+> 1 | db.posts.insertOne({"os": "linux"}{id : "wow"})
+    |                                   ^
+  2 |
+
+Atlas atlas-lxrimx-shard-0 [primary] cmdpractice> db.posts.insertOne({"os": "linux"},{id : "wow"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("648f2344efdf9aa568c592e1")
+}
+Atlas atlas-lxrimx-shard-0 [primary] cmdpractice> db.posts.insertMany([{id:"good"}, {id:"bad}])
+Uncaught:
+SyntaxError: Unterminated string constant. (1:38)
+
+> 1 | db.posts.insertMany([{id:"good"}, {id:"bad}])
+    |                                       ^
+  2 |
+
+Atlas atlas-lxrimx-shard-0 [primary] cmdpractice> db.posts.insertMany([{id:"good"}, {id:"bad"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("648f23a9efdf9aa568c592e2"),
+    '1': ObjectId("648f23a9efdf9aa568c592e3")
+  }
+}
+Atlas atlas-lxrimx-shard-0 [primary] cmdpractice> 
